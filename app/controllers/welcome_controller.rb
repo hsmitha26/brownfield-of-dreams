@@ -2,28 +2,11 @@
 
 class WelcomeController < ApplicationController
   def index
+    welcome = WelcomeFacade.new
     if current_user
-      @tutorials = all_tutorials
+      @tutorials = welcome.all_tutorials(params[:page], params[:tag])
     else
-      @tutorials = visitor_tutorials
-    end
-  end
-
-  private
-
-  def all_tutorials
-    if params[:tag]
-      Tutorial.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 5)
-    else
-      Tutorial.all.paginate(page: params[:page], per_page: 5)
-    end
-  end
-
-  def visitor_tutorials
-    if params[:tag]
-      Tutorial.where(classroom: false).tagged_with(params[:tag]).paginate(page: params[:page], per_page: 5)
-    else
-      Tutorial.where(classroom: false).paginate(page: params[:page], per_page: 5)
+      @tutorials = welcome.visitor_tutorials(params[:page], params[:tag])
     end
   end
 end
