@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class WelcomeFacade
-
   def all_tutorials(page, tag)
     if tag
       Tutorial.tagged_with(tag).paginate(page: page, per_page: 5)
@@ -17,5 +16,4 @@ class WelcomeFacade
       Tutorial.where(classroom: false).paginate(page: page, per_page: 5)
     end
   end
-
 end

@@ -3,10 +3,10 @@
 class WelcomeController < ApplicationController
   def index
     welcome = WelcomeFacade.new
-    if current_user
-      @tutorials = welcome.all_tutorials(params[:page], params[:tag])
-    else
-      @tutorials = welcome.visitor_tutorials(params[:page], params[:tag])
-    end
+    @tutorials = if current_user
+                   welcome.all_tutorials(params[:page], params[:tag])
+                 else
+                   welcome.visitor_tutorials(params[:page], params[:tag])
+                 end
   end
 end
