@@ -10,8 +10,14 @@ require 'rails_helper'
 
 describe "A logged in user: " do
   it "can connect to Github" do
-    visit '/'
-    create(:user)
-    binding.pry
+    # tutorial = create(:tutorial, title: 'How to Tie Your Shoes')
+    # video = create(:video, title: 'The Bunny Ears Technique', tutorial: tutorial)
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+    expect(page).to have_link('Connect to GitHub')
+    # save_and_open_page
+    # binding.pry
   end
 end
