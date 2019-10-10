@@ -9,15 +9,32 @@ require 'rails_helper'
 # And I should see all of the content from the previous Github stories (repos, followers, and following)
 
 describe "A logged in user: " do
-  it "can connect to Github" do
-    # tutorial = create(:tutorial, title: 'How to Tie Your Shoes')
-    # video = create(:video, title: 'The Bunny Ears Technique', tutorial: tutorial)
+  it "can connect to Github via OAuth" do
     user = create(:user)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-    expect(page).to have_link('Connect to GitHub')
-    # save_and_open_page
-    # binding.pry
+
+    stub_omniauth
+    click_on 'Connect to GitHub'
+    user.reload
+
+    expect(user.github_token).to eq('pizza')
+  end
+
+  def stub_omniauth
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      provider: 'github',
+      extra: {
+        raw_info: {
+          login: "1234"
+        }
+      },
+      credentials: {
+        token: "pizza",
+      }
+    })
   end
 end
