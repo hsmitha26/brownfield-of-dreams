@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show; end
+  def show
+    if current_user.github_token
+      facade = UserFacade.new(current_user)
+      @repos = facade.format_repos(5)
+    end
+  end
 
   def new
     @user = User.new
