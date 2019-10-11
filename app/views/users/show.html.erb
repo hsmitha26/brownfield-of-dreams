@@ -1,6 +1,5 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
-
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <% unless current_user.github_token %>
     <%= link_to 'Connect to GitHub', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
@@ -12,5 +11,13 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+  </section>
+  <section>
+    <% if current_user.github_token %>
+      <h1>GitHub</h1>
+      <% @repos.each do |repo| %>
+        <%= link_to repo["name"], repo["html_url"] %>
+      <% end %>
+    <% end %>
   </section>
 </section>
