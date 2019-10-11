@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show; end
+  def show
+    if (current_user && current_user.github_token)
+      conn = Faraday.get("https://api.github.com/user/repos?access_token=#{current_user.github_token}")
+      @repos = JSON.parse(conn.body)
+
+
+      # binding.pry
+    # access the repos to pass on to the view.
+    # then only display repos
+    end
+  end
 
   def new
     @user = User.new
