@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     if current_user.github_token
       facade = UserFacade.new(current_user)
       @repos = facade.format_repos(5)
+      @followers = facade.format_followers
     end
   end
 

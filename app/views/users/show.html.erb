@@ -20,6 +20,10 @@
       <% @repos.each do |repo| %>
         <li><%= link_to repo.name, repo.url %></li>
       <% end %>
+      <h3>Followers</h3>
+      <% @followers.each do |follower| %>
+        <li><%= link_to follower.handle, follower.url %></li>
+      <% end %>
     <% end %>
   </section>
 </section>
