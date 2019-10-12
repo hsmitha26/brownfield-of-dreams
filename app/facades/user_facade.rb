@@ -12,4 +12,11 @@ class UserFacade
       Repository.new(repo_hash["name"], repo_hash["html_url"])
     end
   end
+
+  def format_followers
+    full_followers_array = @github_service.get_followers
+    full_followers_array.map do |follower_hash|
+      GithubUser.new(follower_hash["login"], follower_hash["html_url"])
+    end
+  end
 end

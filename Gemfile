@@ -42,9 +42,12 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'vcr'
   gem 'webdrivers'
+end
+
+group :test do
   gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

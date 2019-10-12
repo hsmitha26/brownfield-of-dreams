@@ -11,6 +11,11 @@ class GithubService
     JSON.parse(oauth_response.body)
   end
 
+  def get_followers
+    oauth_response = conn.get('followers')
+    JSON.parse(oauth_response.body)
+  end
+
   private
 
   def conn
