@@ -9,7 +9,7 @@ require 'rails_helper'
 # And I should see all of the content from the previous Github stories (repos, followers, and following)
 
 describe "A logged in user: " do
-  it "can connect to Github via OAuth" do
+  xit "can connect to Github via OAuth" do
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
