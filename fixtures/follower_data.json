@@ -1,0 +1,42 @@
+[
+    {
+        "login": "leiyakenney",
+        "id": 45922590,
+        "node_id": "MDQ6VXNlcjQ1OTIyNTkw",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/45922590?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/leiyakenney",
+        "html_url": "https://github.com/leiyakenney",
+        "followers_url": "https://api.github.com/users/leiyakenney/followers",
+        "following_url": "https://api.github.com/users/leiyakenney/following{/other_user}",
+        "gists_url": "https://api.github.com/users/leiyakenney/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/leiyakenney/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/leiyakenney/subscriptions",
+        "organizations_url": "https://api.github.com/users/leiyakenney/orgs",
+        "repos_url": "https://api.github.com/users/leiyakenney/repos",
+        "events_url": "https://api.github.com/users/leiyakenney/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/leiyakenney/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    {
+        "login": "StarPerfect",
+        "id": 47605558,
+        "node_id": "MDQ6VXNlcjQ3NjA1NTU4",
+        "avatar_url": "https://avatars2.githubusercontent.com/u/47605558?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/StarPerfect",
+        "html_url": "https://github.com/StarPerfect",
+        "followers_url": "https://api.github.com/users/StarPerfect/followers",
+        "following_url": "https://api.github.com/users/StarPerfect/following{/other_user}",
+        "gists_url": "https://api.github.com/users/StarPerfect/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/StarPerfect/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/StarPerfect/subscriptions",
+        "organizations_url": "https://api.github.com/users/StarPerfect/orgs",
+        "repos_url": "https://api.github.com/users/StarPerfect/repos",
+        "events_url": "https://api.github.com/users/StarPerfect/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/StarPerfect/received_events",
+        "type": "User",
+        "site_admin": false
+    }
+]
