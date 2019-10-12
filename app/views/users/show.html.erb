@@ -24,6 +24,10 @@
       <% @followers.each do |follower| %>
         <li><%= link_to follower.handle, follower.url %></li>
       <% end %>
+      <h3>Following</h3>
+      <% @following.each do |following| %>
+        <li><%= link_to following.handle, following.url %></li>
+      <% end %>
     <% end %>
   </section>
 </section>

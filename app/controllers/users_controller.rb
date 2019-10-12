@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       facade = UserFacade.new(current_user)
       @repos = facade.format_repos(5)
       @followers = facade.format_followers
+      @following = facade.format_following
     end
   end
 

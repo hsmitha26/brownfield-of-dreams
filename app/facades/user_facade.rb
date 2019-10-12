@@ -19,4 +19,11 @@ class UserFacade
       GithubUser.new(follower_hash["login"], follower_hash["html_url"])
     end
   end
+
+  def format_following
+    full_following_array = @github_service.get_following
+    full_following_array.map do |following_hash|
+      GithubUser.new(following_hash["login"], following_hash["html_url"])
+    end
+  end
 end
