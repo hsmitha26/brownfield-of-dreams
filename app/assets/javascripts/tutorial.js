@@ -26,3 +26,7 @@ function onPlayerStateChange(event) {
     message.innerHTML = "You watched them all. Bask in the glory of your new skills."
   }
 }
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
