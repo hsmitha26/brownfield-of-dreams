@@ -29,6 +29,9 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
+  def destroy
+
+  end
   private
 
   def new_tutorial_params
