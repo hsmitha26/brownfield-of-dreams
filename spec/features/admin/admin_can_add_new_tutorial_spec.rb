@@ -12,7 +12,6 @@ describe "An admin visiting the admin dashboard" do
     fill_in 'tutorial[title]', with: 'Brownfield of Dreams'
     fill_in 'tutorial[description]', with: 'Tips to work in a brownfield project.'
     fill_in 'tutorial[thumbnail]', with: 'http://i3.ytimg.com/vi/BotaoeIFrYE/maxresdefault.jpg'
-    fill_in 'tutorial[playlist_id]', with: 'PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5'
 
     click_on 'Save'
     expect(page).to have_content('Successfully added tutorial.')
