@@ -32,7 +32,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
   def new_tutorial_params
-    params.require(:tutorial).permit(:id,:title, :description, :thumbnail)
+    params.require(:tutorial).permit(:id,:title, :description, :thumbnail, :playlist_id)
   end
 
   def tutorial_params
