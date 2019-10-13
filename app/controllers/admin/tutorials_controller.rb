@@ -35,6 +35,7 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
     # binding.pry
   end
+
   private
 
   def new_tutorial_params
