@@ -17,7 +17,6 @@ class Admin::TutorialsController < Admin::BaseController
     end
   end
 
-
   def edit
     @tutorial = Tutorial.find(params[:id])
   end
