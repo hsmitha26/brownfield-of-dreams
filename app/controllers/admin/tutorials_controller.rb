@@ -33,7 +33,6 @@ class Admin::TutorialsController < Admin::BaseController
     tutorial = Tutorial.find(params[:id])
     tutorial.destroy
     redirect_to admin_dashboard_path
-    # binding.pry
   end
 
   private
