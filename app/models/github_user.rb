@@ -7,5 +7,4 @@ class GithubUser
     @handle = handle
     @url = url
   end
-
 end

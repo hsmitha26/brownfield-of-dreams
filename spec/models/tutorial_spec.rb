@@ -12,6 +12,5 @@ describe Tutorial, type: :model do
     it {should validate_presence_of(:title)}
     it {should validate_presence_of(:description)}
     it {should validate_presence_of(:thumbnail)}
-    it {should validate_presence_of(:playlist_id)}
   end
 end
