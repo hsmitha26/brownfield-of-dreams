@@ -24,7 +24,7 @@
       <% @followers.each do |follower| %>
         <li><%= link_to follower.handle, follower.url %>
           <% if current_user.can_friend?(follower.handle) %>
-            <p>test</p>
+            <%= link_to "Add Friend", friendships_path(:friend_id => follower.handle), :method => :post %>
           <% end %>
         </li>
       <% end %>
