@@ -12,4 +12,10 @@ class User < ApplicationRecord
   enum role: %i[default admin]
 
   has_secure_password
+
+  def can_friend?(handle)
+    user = User.find_by(github_handle: handle)
+    friendship = Friendship.find_by(user_id: self.id, friend_id: user.id)
+    return(user && !friendship)
+  end
 end
