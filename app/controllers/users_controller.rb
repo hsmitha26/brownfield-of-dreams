@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       @repos = facade.format_repos(5)
       @followers = facade.format_followers
       @following = facade.format_following
+      @git_friends = current_user.friends
     end
   end
 

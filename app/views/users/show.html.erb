@@ -22,11 +22,23 @@
       <% end %>
       <h3>Followers</h3>
       <% @followers.each do |follower| %>
-        <li><%= link_to follower.handle, follower.url %></li>
+        <li><%= link_to follower.handle, follower.url %>
+          <% if current_user.can_friend?(follower.handle) %>
+            | <%= link_to "Add Friend", friendships_path(:friend_id => follower.handle), :method => :post %>
+          <% end %>
+        </li>
       <% end %>
       <h3>Following</h3>
       <% @following.each do |following| %>
-        <li><%= link_to following.handle, following.url %></li>
+        <li><%= link_to following.handle, following.url %>
+          <% if current_user.can_friend?(following.handle) %>
+            | <%= link_to "Add Friend", friendships_path(:friend_id => following.handle), :method => :post %>
+          <% end %>
+        </li>
+      <% end %>
+      <h3>Github Friends</h3>
+      <% @git_friends.each do |friend| %>
+        <li><%= friend.first_name %> <%= friend.last_name %> | <%= friend.github_handle %></li>
       <% end %>
     <% end %>
   </section>

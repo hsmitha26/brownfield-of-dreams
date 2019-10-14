@@ -3,7 +3,8 @@
 class GithubController < ApplicationController
   def create
     token = request.env['omniauth.auth']['credentials']['token']
-    current_user.update(github_token: token)
+    handle = request.env['omniauth.auth']['info']['nickname']
+    current_user.update(github_token: token, github_handle: handle)
     redirect_to '/dashboard'
   end
 end

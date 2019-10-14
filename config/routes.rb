@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create update edit]
 
+  resources :friendships, only: :create
+
   resources :tutorials, only: %i[show index] do
     resources :videos, only: %i[show index]
   end
