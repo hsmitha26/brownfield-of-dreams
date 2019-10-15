@@ -10,8 +10,11 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+      <% @bookmarks.each do |video| %>
+        <li> <%= video.title %> </li>
+      <% end %>
   </section>
   <section class='github'>
     <% if current_user.github_token %>

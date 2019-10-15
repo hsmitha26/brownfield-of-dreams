@@ -2,6 +2,8 @@
 
 class UsersController < ApplicationController
   def show
+    binding.pry
+    @bookmarks = current_user.videos
     if current_user.github_token
       facade = UserFacade.new(current_user)
       @repos = facade.format_repos(5)
