@@ -4,6 +4,7 @@
   <% unless current_user.email_confirmed %>
     <h3>This account has not yet been activated. Please check your email.</h3>
   <% end %>
+  
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <% unless current_user.github_token %>
     <%= link_to 'Connect to GitHub', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
