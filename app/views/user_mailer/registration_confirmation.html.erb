@@ -1,0 +1,7 @@
+Hello <%= @user.first_name %>,
+
+Your registration is almost complete.
+
+To complete your registration, please click on the URL below:
+
+<%= button_to "Complete Registration", confirm_email_url(@user.confirm_token) %>
