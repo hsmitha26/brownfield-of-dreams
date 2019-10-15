@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       user.set_confirmation_token
       user.save(validate: false)
-      UserMailer.registration_confirmation(user).deliver_now
+      UserMailer.registration_confirmation(user).deliver_now!
       flash[:success] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     if user
       user.validate_email
       user.save(validate: false)
+      flash[:success] = "Thank you! Your account is now active."
       redirect_to dashboard_path
     else
       flash[:error] = "Oops, something went wrong."
