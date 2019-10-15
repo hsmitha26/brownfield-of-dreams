@@ -6,6 +6,8 @@ describe User, type: :model do
   describe 'relationships' do
     it {should have_many :user_videos}
     it {should have_many(:videos).through(:user_videos)}
+    it {should have_many :friendships}
+    it {should have_many(:friends).through(:friendships)}
   end
 
   describe 'validations' do
@@ -28,6 +30,19 @@ describe User, type: :model do
 
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
+    end
+  end
+
+  describe 'instance methods' do
+    it 'can friend?' do
+      user_1 = create(:user)
+      user_2 = create(:user, github_handle: "Test")
+
+      expect(user_1.can_friend?(user_2.github_handle)).to be true
+
+      user_1.friendships.create(friend_id: user_2.id)
+
+      expect(user_1.can_friend?(user_2.github_handle)).to be false 
     end
   end
 end
