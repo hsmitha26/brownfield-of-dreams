@@ -1,5 +1,6 @@
 class UserMailer < ApplicationMailer
-  def registraion_confirmation(user)
-
+  def registration_confirmation(user)
+    @user = user
+    mail(to: "#{user.name} <#{user.email}>", subject: "Brownfield Registration Confirmation")
   end
 end
