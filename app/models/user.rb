@@ -21,4 +21,15 @@ class User < ApplicationRecord
     friendship = Friendship.find_by(user_id: self.id, friend_id: user.id) if user
     return(user && !friendship)
   end
+
+  def set_confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+
+  def validate_email
+    self.email_confirmed = true
+    self.confirm_token = nil
+  end
 end

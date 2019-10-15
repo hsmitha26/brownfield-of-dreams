@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/video', to: 'video#show'
 
   resources :users, only: %i[new create update edit]
+  get '/:token/confirm_email/', to: 'users#confirm_email', as: 'confirm_email'
 
   resources :friendships, only: :create
 

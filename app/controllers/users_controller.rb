@@ -19,10 +19,27 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      user.set_confirmation_token
+      user.save(validate: false)
+      UserMailer.registration_confirmation(user).deliver_now!
+      flash[:success] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
       render :new
+    end
+  end
+
+  def confirm_email
+    user = User.find_by(confirm_token: params[:token])
+    if user
+      user.validate_email
+      user.save(validate: false)
+      flash[:success] = "Thank you! Your account is now active."
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Oops, something went wrong."
+      redirect_to dashboard_path
     end
   end
 
