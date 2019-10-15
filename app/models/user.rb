@@ -29,8 +29,9 @@ class User < ApplicationRecord
       self.confirm_token = SecureRandon.urlsafe_base64.to_s
     end
   end
-  # def validate_email
-  #   self.email_confirmed = true
-  #   self.confirm_token = nil
-  # end
+
+  def validate_email
+    self.email_confirmed = true
+    self.confirm_token = nil
+  end
 end
