@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def show
-    binding.pry
+    # binding.pry
     @bookmarks = current_user.videos
     if current_user.github_token
       facade = UserFacade.new(current_user)

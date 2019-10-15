@@ -15,6 +15,9 @@ describe 'A registered user' do
     visit tutorial_path(t1)
     click_on 'Bookmark'
 
+    visit tutorial_path(t2)
+    click_on 'Bookmark'
+    
     visit dashboard_path
     expect(page).to have_content("Bookmarked Segments")
 
