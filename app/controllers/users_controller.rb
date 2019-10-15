@@ -30,6 +30,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm_email
+    user = User.find_by(confirm_token: params[:token])
+    if user
+      user.validate_email
+      user.save(validate: false)
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Oops, something went wrong."
+      redirect_to dashboard_path
+    end
+  end
+
   private
 
   def user_params
