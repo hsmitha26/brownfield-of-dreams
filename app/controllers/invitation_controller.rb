@@ -7,7 +7,6 @@ class InvitationController < ApplicationController
   def create
     service = GithubService.new(current_user)
     invited_user = service.get_user(params['GitHub Handle'])
-    binding.pry
     if invited_user && invited_user['email']
       UserMailer.invitation(current_user, invited_user).deliver_now!
     elsif invited_user
