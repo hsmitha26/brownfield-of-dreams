@@ -15,21 +15,29 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
     <h1>Bookmarked Segments</h1>
-  </section>
+    <section class='bookmarks'>
+      <% @tutorials.each do |tutorial| %>
+        <% if tutorial.bookmarked_videos(current_user).count > 0 %>
+          <%= tutorial.title %>
+          <% tutorial.bookmarked_videos(current_user).each do |video| %>
+            <li> Video: <%= video.title %> </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </section>
   <section class='github'>
     <% if current_user.github_token %>
       <h1>My GitHub</h1>
       <section class='repositories'>
         <h3>Repositories</h3>
-        <% @repos.each do |repo| %>
+        <% @facade.format_repos(5).each do |repo| %>
           <li><%= link_to repo.name, repo.url %></li>
         <% end %>
       </section>
       <section class='followers'>
         <h3>Followers</h3>
-        <% @followers.each do |follower| %>
+        <% @facade.format_followers.each do |follower| %>
           <li><%= link_to follower.handle, follower.url %>
             <% if current_user.can_friend?(follower.handle) %>
               | <%= button_to "Add Friend", friendships_path(:friend_id => follower.handle) %>
@@ -39,7 +47,7 @@
       </section>
       <section class='following'>
         <h3>Following</h3>
-        <% @following.each do |following| %>
+        <% @facade.format_following.each do |following| %>
           <li><%= link_to following.handle, following.url %>
             <% if current_user.can_friend?(following.handle) %>
               | <%= button_to "Add Friend", friendships_path(:friend_id => following.handle)%>
