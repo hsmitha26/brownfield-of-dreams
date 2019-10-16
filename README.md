@@ -1,32 +1,38 @@
 # Brownfield Of Dreams
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+Contributors:
+* [Tyler Schaffer](https://github.com/tschaffer1618)
+* [Smitha Hosmani](https://github.com/hsmitha26)
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+A paired project completed in 10 days in Module 3 of Backend Engineering at Turing School of Software and Design.
 
-### Project Board
+This is the first project where we built features on an existing code base, linked [here](https://github.com/turingschool-examples/brownfield-of-dreams).  Until this project we had built only greenfield projects in Rails and Ruby.
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
-
-**Learning Goals and Labels**
-
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
-
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
+Click [here](http://stark-everglades-18768.herokuapp.com/) to access and explore our deployed application.
 
 ### About the Project
 
-This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
+Learning goals for this project:
+* Working in an existing code base
+* Consuming APIs
+* OAuth using OmniAuth
+* Email activation (using Send Grid) to complete user registration
+* Send email invitation (using Send Grid) to invite GitHub users to register on our app
+* Self-referntial association
 
-A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
+
+This Ruby on Rails application organizes YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
+
+A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page. The logged in user can also view the videos they have bookmarked.
+
+A logged in user can connect to their GitHub using OAuth.  After successful authentication, the user can see links to their GitHub repositories, followers and following.  Logged in users can also add friends from their list of following and followers by clicking on "Add Friend" if the friend is a user on our application's database and has a GitHub account.
 
 ## Local Setup
 
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
-
 Clone down the repo
 ```
-$ git clone
+$ git clone git@github.com:hsmitha26/brownfield-of-dreams.git
+$ cd brownfield-of-dreams
 ```
 
 Install the gem packages
@@ -49,9 +55,22 @@ $ rake db:seed
 ```
 
 Run the test suite:
-```ruby
+```
 $ bundle exec rspec
 ```
+
+Set existing videos' position to zero if position is missing:
+```
+$ bundle exec rake update_video:position
+```
+
+You will need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
+
+You will also need:
+* API key with GitHub and have it defined within ENV['GITHUB-TOKEN']
+* API key with SendGrid and have it defined within ENV['SENDGRID-API-KEY']
+* GitHub client ID defined within ENV['GITHUB-CLIENT-ID']
+* GitHub client secret defined within ENV['GITHUB-CLIENT-SECRET']
 
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
