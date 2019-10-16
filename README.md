@@ -47,6 +47,12 @@ $ brew install yarn
 $ yarn add stimulus
 ```
 
+Generate application.yml
+```
+$ figaro install
+$ bundle install
+```
+
 Set up the database
 ```
 $ rake db:create
@@ -67,10 +73,18 @@ $ bundle exec rake update_video:position
 You will need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
 
 You will also need:
-* API key with GitHub and have it defined within ENV['GITHUB-TOKEN']
-* API key with SendGrid and have it defined within ENV['SENDGRID-API-KEY']
-* GitHub client ID defined within ENV['GITHUB-CLIENT-ID']
-* GitHub client secret defined within ENV['GITHUB-CLIENT-SECRET']
+* API key with GitHub and have it defined within ENV['example_github_token']
+* GitHub client ID defined within ENV['github_client_id']
+* GitHub client secret defined within ENV['github_client_secret']
+
+To run tests: ```bundle exec rspec```
+
+To run the application on the local server, have two tabs open in your terminal.
+* in one tab, run: ```$ rails s```
+* in the other tab, run: ```$ mailcatcher```
+
+To interact with the application, open a new window in Chrome and visit: ```localhost:3000```
+To access emails sent by the app, in a separate Chrome tab/window, visit: ```localhost:1080```
 
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
