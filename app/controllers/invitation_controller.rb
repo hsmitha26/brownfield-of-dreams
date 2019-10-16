@@ -8,7 +8,7 @@ class InvitationController < ApplicationController
     service = GithubService.new(current_user)
     invited_user = service.get_user(params['GitHub Handle'])
     if invited_user && invited_user['email']
-      UserMailer.invitation(current_user, invited_user).deliver_now!
+      UserMailer.invitation(current_user, invited_user).deliver_now
     elsif invited_user
       flash[:error] = "The invited user does not have a public email address."
     else

@@ -5,9 +5,6 @@ class UsersController < ApplicationController
     @tutorials = Tutorial.all
     if current_user.github_token
       @facade = UserFacade.new(current_user)
-      # @repos = facade.format_repos(5)
-      # @followers = facade.format_followers
-      # @following = facade.format_following
       @git_friends = current_user.friends
     end
   end
@@ -22,7 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       user.set_confirmation_token
       user.save(validate: false)
-      UserMailer.registration_confirmation(user).deliver_now!
+      UserMailer.registration_confirmation(user).deliver_now
       flash[:success] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else
