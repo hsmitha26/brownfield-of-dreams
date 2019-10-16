@@ -18,12 +18,14 @@
     <h1>Bookmarked Segments</h1>
     <section class='bookmarks'>
       <% @tutorials.each do |tutorial| %>
-        <% if tutorial.bookmarked_videos(current_user).count > 0 %>
-          <%= tutorial.title %>
-          <% tutorial.bookmarked_videos(current_user).each do |video| %>
-            <li> Video: <%= video.title %> </li>
+        <p>
+          <% if tutorial.bookmarked_videos(current_user).count > 0 %>
+            Tutorial: <%= link_to tutorial.title, tutorial_path(tutorial) %>
+            <% tutorial.bookmarked_videos(current_user).each do |video| %>
+              <li> Video: <%= link_to video.title, tutorial_path(tutorial, video_id: video.id) %> </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </p>
       <% end %>
     </section>
   <section class='github'>
