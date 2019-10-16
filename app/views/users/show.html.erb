@@ -15,12 +15,17 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
-      <% @bookmarks.each do |video| %>
-        <li> Video: <%= video.title %> </li>
+    <section class='bookmarks'>
+      <% @tutorials.each do |tutorial| %>
+        <% if tutorial.bookmarked_videos(current_user).count > 0 %>
+          <%= tutorial.title %>
+          <% tutorial.bookmarked_videos(current_user).each do |video| %>
+            <li> Video: <%= video.title %> </li>
+          <% end %>
+        <% end %>
       <% end %>
-  </section>
+    </section>
   <section class='github'>
     <% if current_user.github_token %>
       <h1>My GitHub</h1>
