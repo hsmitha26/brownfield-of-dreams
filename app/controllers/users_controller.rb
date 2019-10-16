@@ -5,9 +5,6 @@ class UsersController < ApplicationController
     @tutorials = Tutorial.all
     if current_user.github_token
       @facade = UserFacade.new(current_user)
-      # @repos = facade.format_repos(5)
-      # @followers = facade.format_followers
-      # @following = facade.format_following
       @git_friends = current_user.friends
     end
   end
