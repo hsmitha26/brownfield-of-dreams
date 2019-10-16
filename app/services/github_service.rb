@@ -20,6 +20,13 @@ class GithubService
     JSON.parse(oauth_response.body)
   end
 
+  def get_user(username)
+    token = @user.github_token
+    connection = Faraday.new(url: 'https://api.github.com/users', params: { access_token: token })
+    oauth_response = connection.get("#{username}")
+    JSON.parse(oauth_response.body)
+  end
+
   private
 
   def conn

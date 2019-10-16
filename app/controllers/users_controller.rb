@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       user.set_confirmation_token
       user.save(validate: false)
-      UserMailer.registration_confirmation(user).deliver_now!
+      UserMailer.registration_confirmation(user).deliver_now
       flash[:success] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else

@@ -33,7 +33,10 @@ Rails.application.routes.draw do
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: 'github#create'
 
-  get '/dashboard', to: 'users#show'
+  get '/invite', to: 'invitation#new', as: :invitation
+  get '/invite/create', to: 'invitation#create'
+
+  get '/dashboard', to: 'users#show' 
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 

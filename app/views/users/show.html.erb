@@ -10,6 +10,7 @@
   <% unless current_user.github_token %>
     <%= link_to 'Connect to GitHub', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
+  <%= link_to 'Send an Invitation', invitation_path, class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>

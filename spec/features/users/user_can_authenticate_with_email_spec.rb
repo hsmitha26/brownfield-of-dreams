@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-describe "A logged in user: " do
+describe 'A user' do
   before(:each) do
+    @user = create(:user, github_token: ENV['example_github_token'], confirm_token: '123')
+
     @json_repos = File.open('./fixtures/repo_data.json')
     stub_request(:get, "https://api.github.com/user/repos?access_token=#{ENV['example_github_token']}")
       .to_return(status: 200, body: @json_repos)
@@ -15,28 +17,24 @@ describe "A logged in user: " do
       .to_return(status: 200, body: @json_following)
   end
 
-  it "can connect to Github via OAuth" do
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
-      info: {
-        nickname: 'tschaffer1618'
-      },
-      credentials: {
-        token: ENV['example_github_token'],
-      }
-    )
+  it 'can authenticate their account by email' do
+    visit '/'
 
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    click_on "Sign In"
 
-    visit dashboard_path
+    fill_in 'session[email]', with: @user.email
+    fill_in 'session[password]', with: @user.password
 
-    click_on 'Connect to GitHub'
+    click_on 'Log In'
 
     expect(current_path).to eq dashboard_path
 
-    expect(page).to_not have_content('Connect to GitHub')
+    expect(page).to have_content("This account has not yet been activated. Please check your email.")
 
-    expect(page).to have_content("My GitHub")
+    visit "/#{@user.confirm_token}/confirm_email"
+
+    expect(current_path).to eq dashboard_path
+
+    expect(page).to have_content("Status: Active")
   end
 end
