@@ -23,9 +23,8 @@ class User < ApplicationRecord
   end
 
   def set_confirmation_token
-    if confirm_token.blank?
-      update(confirm_token: SecureRandom.urlsafe_base64.to_s)
-    end
+    token = SecureRandom.urlsafe_base64.to_s
+    update(confirm_token: token) if confirm_token.blank?
   end
 
   def validate_email
