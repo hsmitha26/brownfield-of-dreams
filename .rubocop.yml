@@ -99,6 +99,7 @@ Metrics/BlockLength:
     - '**/*.gemspec'
     - 'db/**/*'
     - 'config/routes.rb'
+    - 'config/environments/*.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -106,6 +107,7 @@ Metrics/LineLength:
     - 'db/**/*'
     - 'config/**/*'
     - 'Rakefile'
+    - 'app/mailers/*.rb'
     # - '**/*.rake'
     # - 'spec/**/*.rb'
     # - '**/*.gemspec'

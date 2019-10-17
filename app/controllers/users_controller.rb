@@ -3,10 +3,8 @@
 class UsersController < ApplicationController
   def show
     @tutorials = Tutorial.all
-    if current_user.github_token
-      @facade = UserFacade.new(current_user)
-      @git_friends = current_user.friends
-    end
+    @facade = UserFacade.new(current_user)
+    @git_friends = current_user.friends
   end
 
   def new
@@ -17,9 +15,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      user.set_confirmation_token
-      user.save(validate: false)
-      UserMailer.registration_confirmation(user).deliver_now
+      send_confirmation_email(user)
       flash[:success] = "Logged in as #{user.first_name}."
       redirect_to dashboard_path
     else
@@ -33,17 +29,22 @@ class UsersController < ApplicationController
     if user
       user.validate_email
       user.save(validate: false)
-      flash[:success] = "Thank you! Your account is now active."
-      redirect_to dashboard_path
+      flash[:success] = 'Thank you! Your account is now active.'
     else
-      flash[:error] = "Oops, something went wrong."
-      redirect_to dashboard_path
+      flash[:error] = 'Oops, something went wrong.'
     end
+    redirect_to dashboard_path
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
+  end
+
+  def send_confirmation_email(user)
+    user.set_confirmation_token
+    user.save(validate: false)
+    UserMailer.registration_confirmation(user).deliver_now
   end
 end
