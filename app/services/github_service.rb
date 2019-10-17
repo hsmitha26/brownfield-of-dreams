@@ -22,7 +22,8 @@ class GithubService
 
   def get_user(username)
     token = @user.github_token
-    connection = Faraday.new(url: 'https://api.github.com/users', params: { access_token: token })
+    url = 'https://api.github.com/users'
+    connection = Faraday.new(url: url, params: { access_token: token })
     oauth_response = connection.get(username.to_s)
     JSON.parse(oauth_response.body)
   end
@@ -31,6 +32,7 @@ class GithubService
 
   def conn
     token = @user.github_token
-    Faraday.new(url: 'https://api.github.com/user', params: { access_token: token })
+    url = 'https://api.github.com/user'
+    Faraday.new(url: url, params: { access_token: token })
   end
 end
