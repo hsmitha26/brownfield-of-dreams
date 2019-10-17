@@ -10,15 +10,17 @@ This is the first project where we built features on an existing code base, link
 
 Click [here](http://stark-everglades-18768.herokuapp.com/) to access and explore our deployed application.
 
-### About the Project
+## About the Project
 
 Learning goals for this project:
 * Working in an existing code base
+* Resolving issues related to versioning
 * Consuming APIs
-* OAuth using OmniAuth
+* OAuth2
 * Email activation (using Send Grid) to complete user registration
 * Send email invitation (using Send Grid) to invite GitHub users to register on our app
-* Self-referntial association
+* Self-referntial association.  
+* [Database diagram](https://github.com/hsmitha26/brownfield-of-dreams/blob/master/db/db_diagram.png) including tables we interacted with during this project
 
 
 This Ruby on Rails application organizes YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
@@ -29,13 +31,19 @@ A logged in user can connect to their GitHub using OAuth.  After successful auth
 
 ## Local Setup
 
+Warning: you may need to resolve versioning issues, based on your environments of rbenv, Rails, Ruby, PostgreSQL, and Node.
+
+### Versions
+* [Ruby 2.4.1](https://www.ruby-lang.org/en/documentation/installation/)
+* [Rails 5.2.0](https://rubyonrails.org/)
+
 Clone down the repo
 ```
 $ git clone git@github.com:hsmitha26/brownfield-of-dreams.git
 $ cd brownfield-of-dreams
 ```
 
-Install the gem packages
+Install gem dependencies
 ```
 $ bundle install
 ```
@@ -50,7 +58,6 @@ $ yarn add stimulus
 Generate application.yml
 ```
 $ figaro install
-$ bundle install
 ```
 
 Set up the database
@@ -94,7 +101,3 @@ To access emails sent by the app, in a separate Chrome tab/window, visit: ```loc
 * [vcr](https://github.com/vcr/vcr)
 * [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
 * [chromedriver-helper](http://chromedriver.chromium.org/)
-
-### Versions
-* Ruby 2.4.1
-* Rails 5.2.0
