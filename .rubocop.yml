@@ -107,6 +107,7 @@ Metrics/LineLength:
     - 'db/**/*'
     - 'config/**/*'
     - 'Rakefile'
+    - 'app/mailers/*.rb'
     # - '**/*.rake'
     # - 'spec/**/*.rb'
     # - '**/*.gemspec'
