@@ -91,6 +91,7 @@ To run the application on the local server, have two tabs open in your terminal.
 * in the other tab, run: ```$ mailcatcher```
 
 To interact with the application, open a new window in Chrome and visit: ```localhost:3000```
+
 To access emails sent by the app, in a separate Chrome tab/window, visit: ```localhost:1080```
 
 ## Technologies
