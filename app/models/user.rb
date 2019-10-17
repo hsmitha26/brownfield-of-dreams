@@ -18,13 +18,13 @@ class User < ApplicationRecord
 
   def can_friend?(handle)
     user = User.find_by(github_handle: handle)
-    friendship = Friendship.find_by(user_id: self.id, friend_id: user.id) if user
-    return(user && !friendship)
+    friendship = Friendship.find_by(user_id: id, friend_id: user.id) if user
+    (user && !friendship)
   end
 
   def set_confirmation_token
-    if self.confirm_token.blank?
-      self.update(confirm_token: SecureRandom.urlsafe_base64.to_s)
+    if confirm_token.blank?
+      update(confirm_token: SecureRandom.urlsafe_base64.to_s)
     end
   end
 

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get '/invite', to: 'invitation#new', as: :invitation
   get '/invite/create', to: 'invitation#create'
 
-  get '/dashboard', to: 'users#show' 
+  get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 

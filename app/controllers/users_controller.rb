@@ -33,10 +33,10 @@ class UsersController < ApplicationController
     if user
       user.validate_email
       user.save(validate: false)
-      flash[:success] = "Thank you! Your account is now active."
+      flash[:success] = 'Thank you! Your account is now active.'
       redirect_to dashboard_path
     else
-      flash[:error] = "Oops, something went wrong."
+      flash[:error] = 'Oops, something went wrong.'
       redirect_to dashboard_path
     end
   end
