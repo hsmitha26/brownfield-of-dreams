@@ -31,7 +31,7 @@ A logged in user can connect to their GitHub using OAuth.  After successful auth
 
 ## Local Setup
 
-##### Warning: you may need to resolve versioning issues, based on your environments of rbenv, Rails, Ruby, PostgreSQL, and Node.
+#### Warning: you may need to resolve versioning issues, based on your environments of rbenv, Rails, Ruby, PostgreSQL, and Node.
 
 ### Versions
 * [Ruby 2.4.1](https://www.ruby-lang.org/en/documentation/installation/)
