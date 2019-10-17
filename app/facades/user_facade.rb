@@ -25,4 +25,8 @@ class UserFacade
       GithubUser.new(following_hash['login'], following_hash['html_url'])
     end
   end
+
+  def tutorials
+    Tutorial.all
+  end
 end

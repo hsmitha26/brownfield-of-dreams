@@ -14,4 +14,8 @@ class Tutorial < ApplicationRecord
         .where(tutorial_id: id)
         .order('position ASC')
   end
+
+  def bookmarked_videos?(user)
+    bookmarked_videos(user).count.positive?
+  end
 end

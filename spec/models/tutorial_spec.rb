@@ -36,6 +36,9 @@ describe Tutorial, type: :model do
 
       expect(t1.bookmarked_videos(user)).to eq([t1v2, t1v1])
       expect(t2.bookmarked_videos(user)).to eq([t2v1])
+
+      expect(t1.bookmarked_videos?(user)).to be true
+      expect(t2.bookmarked_videos?(user)).to be true
     end
   end
 end

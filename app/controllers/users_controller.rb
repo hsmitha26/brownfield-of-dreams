@@ -2,9 +2,7 @@
 
 class UsersController < ApplicationController
   def show
-    @tutorials = Tutorial.all
     @facade = UserFacade.new(current_user)
-    @git_friends = current_user.friends
   end
 
   def new
