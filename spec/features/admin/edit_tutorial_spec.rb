@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-describe 'An admin can edit a tutorial' do
+describe 'An admin' do
   let(:tutorial) { create(:tutorial) }
   let(:admin)    { create(:admin) }
 
-  it 'by adding a video' do
+  it 'can edit a tutorial by adding a video' do
     VCR.use_cassette("admin_add_a_video") do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -24,6 +24,16 @@ describe 'An admin can edit a tutorial' do
       within(first('.video')) do
         expect(page).to have_content('How to tie your shoes.')
       end
+
+      visit edit_admin_tutorial_path(tutorial)
+
+      click_on 'Add Video'
+
+      fill_in 'video[title]', with: 'How to tie your shoes.'
+
+      click_on 'Create Video'
+
+      expect(page).to have_content('Unable to create video.')
     end
   end
 end
