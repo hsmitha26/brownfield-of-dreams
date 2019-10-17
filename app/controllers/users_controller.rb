@@ -17,9 +17,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      user.set_confirmation_token
-      user.save(validate: false)
-      UserMailer.registration_confirmation(user).deliver_now
+      send_confirmation_email(user)
       flash[:success] = "Logged in as #{user.first_name}."
       redirect_to dashboard_path
     else
@@ -44,5 +42,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
+  end
+
+  def send_confirmation_email(user)
+    user.set_confirmation_token
+    user.save(validate: false)
+    UserMailer.registration_confirmation(user).deliver_now
   end
 end
