@@ -42,7 +42,24 @@ describe User, type: :model do
 
       user_1.friendships.create(friend_id: user_2.id)
 
-      expect(user_1.can_friend?(user_2.github_handle)).to be false 
+      expect(user_1.can_friend?(user_2.github_handle)).to be false
+    end
+
+    it 'set confirmation token' do
+      user = create(:user, confirm_token: nil)
+
+      user.set_confirmation_token
+
+      expect(user.confirm_token).to_not be nil
+    end
+
+    it 'validate email' do
+      user = create(:user, email_confirmed: false, confirm_token: '123')
+
+      user.validate_email
+
+      expect(user.confirm_token).to be nil
+      expect(user.email_confirmed).to be true
     end
   end
 end
