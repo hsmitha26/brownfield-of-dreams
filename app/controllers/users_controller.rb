@@ -3,10 +3,8 @@
 class UsersController < ApplicationController
   def show
     @tutorials = Tutorial.all
-    if current_user.github_token
-      @facade = UserFacade.new(current_user)
-      @git_friends = current_user.friends
-    end
+    @facade = UserFacade.new(current_user)
+    @git_friends = current_user.friends
   end
 
   def new
