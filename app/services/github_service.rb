@@ -5,22 +5,22 @@ class GithubService
     @user = user
   end
 
-  def get_repos
+  def fetch_repos
     oauth_response = conn.get('repos')
     JSON.parse(oauth_response.body)
   end
 
-  def get_followers
+  def fetch_followers
     oauth_response = conn.get('followers')
     JSON.parse(oauth_response.body)
   end
 
-  def get_following
+  def fetch_following
     oauth_response = conn.get('following')
     JSON.parse(oauth_response.body)
   end
 
-  def get_user(username)
+  def fetch_user(username)
     token = @user.github_token
     url = 'https://api.github.com/users'
     connection = Faraday.new(url: url, params: { access_token: token })

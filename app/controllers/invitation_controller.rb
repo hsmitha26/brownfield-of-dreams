@@ -5,7 +5,7 @@ class InvitationController < ApplicationController
 
   def create
     service = GithubService.new(current_user)
-    invited_user = service.get_user(params['GitHub Handle'])
+    invited_user = service.fetch_user(params['GitHub Handle'])
     if invited_user && invited_user['email']
       UserMailer.invitation(current_user, invited_user).deliver_now
       flash[:sucess] = 'Successfully sent invite!'

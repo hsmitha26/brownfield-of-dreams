@@ -12,7 +12,7 @@ describe GithubService do
 
   it "gets repos for the user" do
     VCR.use_cassette("github_service_repos") do
-      json_response = @github_service.get_repos
+      json_response = @github_service.fetch_repos
       repo = json_response.first
       expect(repo).to have_key("name")
       expect(repo).to have_key("html_url")
@@ -21,7 +21,7 @@ describe GithubService do
 
   it "gets followers for the user" do
     VCR.use_cassette("github_service_followers") do
-      json_response = @github_service.get_followers
+      json_response = @github_service.fetch_followers
       follower = json_response.first
       expect(follower).to have_key("login")
       expect(follower).to have_key("html_url")
