@@ -18,9 +18,9 @@
   </ul>
     <h1>Bookmarked Segments</h1>
     <section class='bookmarks'>
-      <% @tutorials.each do |tutorial| %>
+      <% @facade.tutorials.each do |tutorial| %>
         <p>
-          <% if tutorial.bookmarked_videos(current_user).count > 0 %>
+          <% if tutorial.bookmarked_videos?(current_user) %>
             Tutorial: <%= link_to tutorial.title, tutorial_path(tutorial) %>
             <% tutorial.bookmarked_videos(current_user).each do |video| %>
               <li> Video: <%= link_to video.title, tutorial_path(tutorial, video_id: video.id) %> </li>
@@ -60,7 +60,7 @@
       </section>
       <section class='friends'>
         <h3>Github Friends</h3>
-        <% @git_friends.each do |friend| %>
+        <% current_user.friends.each do |friend| %>
           <li><%= friend.first_name %> <%= friend.last_name %> | <%= friend.github_handle %></li>
         <% end %>
       </section>
