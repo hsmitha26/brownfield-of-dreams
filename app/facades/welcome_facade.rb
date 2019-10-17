@@ -11,7 +11,9 @@ class WelcomeFacade
 
   def visitor_tutorials(page, tag)
     if tag
-      Tutorial.where(classroom: false).tagged_with(tag).paginate(page: page, per_page: 5)
+      Tutorial.where(classroom: false)
+              .tagged_with(tag)
+              .paginate(page: page, per_page: 5)
     else
       Tutorial.where(classroom: false).paginate(page: page, per_page: 5)
     end
