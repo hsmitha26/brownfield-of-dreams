@@ -35,6 +35,17 @@ end
 
 SimpleCov.start 'rails'
 
+SimpleCov.start do
+  add_filter "/app/channels/application_cable/channel.rb"
+  add_filter "/app/channels/application_cable/connection.rb"
+  add_filter "/app/controllers/about_controller.rb"
+  add_filter "/app/controllers/admin/api/v1/base_controller.rb"
+  add_filter "/app/controllers/admin/api/v1/tutorial_sequencer_controller.rb"
+  add_filter "/app/controllers/get_started_controller.rb"
+  add_filter "/app/helpers/application_helper.rb"
+  add_filter "/app/jobs/application_job.rb"
+end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
